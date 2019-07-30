@@ -1,9 +1,13 @@
 #include <stdio.h>
+#include "../lib/ciphers.h"
 
 int main(void) {
+	char plainChar, cipherChar;
 
-	char cipherText[] = "This will be cipher text.\n";
-	printf("%s", cipherText);
+	plainChar = 'A';
+	cipherChar = getCipherChar(plainChar);
+
+	printf("Cipher char: %c\n", cipherChar);
 
 	return 0;
 }
