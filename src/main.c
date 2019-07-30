@@ -3,12 +3,14 @@
 
 int main(void) {
 
-	char arr[5];
-	char * arrPtr;
-
 	//test
-	arrPtr = &arr[0];
+	char arr[] = "abc";
+	char * arrPtr = &arr[0];
+	printf("Plain text:\n%s\n", arr);
+
 	arrPtr = rot13(arrPtr);
+
+	printf("Cipher text:\n%s\n", arr);
 
 	return 0;
 }

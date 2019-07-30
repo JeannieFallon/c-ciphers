@@ -4,10 +4,13 @@
 
 char * rot13(char * arr) {
 
-	//test 
-	char cipherChar;
-	cipherChar = getCipherChar(cipherChar);
-	printf("Cipher char: %c\n", cipherChar);
+	int i;
+
+	i = 0;
+	while (arr[i] != '\0') {
+		arr[i] = getCipherChar(arr[i]);
+		i++;
+	}
 	
 	return arr;
 }
