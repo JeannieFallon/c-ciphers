@@ -1,13 +1,14 @@
 #include <stdio.h>
-#include "../lib/ciphers.h"
+#include "../lib/rot13.h"
 
 int main(void) {
-	char plainChar, cipherChar;
 
-	plainChar = 'A';
-	cipherChar = getCipherChar(plainChar);
+	char arr[5];
+	char * arrPtr;
 
-	printf("Cipher char: %c\n", cipherChar);
+	//test
+	arrPtr = &arr[0];
+	arrPtr = rot13(arrPtr);
 
 	return 0;
 }
