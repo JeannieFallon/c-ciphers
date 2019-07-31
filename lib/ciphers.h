@@ -7,5 +7,7 @@
 #define ENG_LOWER_CEILING 122
 
 void getCipherChar(char *, int);
+void getCipherAscii(int, int *, int);
+void getRotation(int *, int);
 
 #endif
