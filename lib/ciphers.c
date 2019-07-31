@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "ciphers.h"
 
-char getCipherChar(char plainChar) {
-	return 'Z';
+void getCipherChar(char * charPtr, int shiftVal) {
+	*charPtr = 'd';
 }

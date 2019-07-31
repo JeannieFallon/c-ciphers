@@ -1,6 +1,6 @@
 #ifndef _CIPHERS_H_
 #define _CIPHERS_H_
 
-char getCipherChar(char);
+void getCipherChar(char *, int);
 
 #endif
