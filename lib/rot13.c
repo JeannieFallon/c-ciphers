@@ -2,9 +2,7 @@
 #include "rot13.h"
 #include "ciphers.h"
 
-char * rot13(char * arr) {
-
-	printf("%d\n", SHIFT_VAL);
+void rot13(char * arr) {
 
 	char * charPtr;
 	int i;
@@ -20,6 +18,4 @@ char * rot13(char * arr) {
 		getCipherChar(charPtr, 1);
 		i++;
 	}
-	
-	return arr;
 }
