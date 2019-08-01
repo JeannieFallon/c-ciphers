@@ -10,12 +10,7 @@ void rot13(char * arr) {
 	i = 0;
 	while (arr[i] != '\0') {
 		charPtr = &arr[i];
-
-		//debug
-		printf("%p\n", charPtr);
-		printf("%c\n", arr[i]);
-
-		getCipherChar(charPtr, 1);
+		getCipherChar(charPtr, SHIFT_VAL);
 		i++;
 	}
 }

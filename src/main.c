@@ -4,7 +4,7 @@
 int main(void) {
 
 	//test
-	char arr[] = "aBc1!";
+	char arr[] = "aBc1! xYz";
 	char * arrPtr = &arr[0];
 	printf("Plain text:\n%s\n", arr);
 
