@@ -5,10 +5,9 @@ int main(void) {
 
 	//test
 	char arr[] = "aBc1! xYz";
-	char * arrPtr = &arr[0];
 	printf("Plain text:\n%s\n", arr);
 
-	rot13(arrPtr);
+	rot13(arr);
 
 	printf("Cipher text:\n%s\n", arr);
 
