@@ -9,7 +9,7 @@ void getCipherChar(char * charPtr, int shiftVal) {
 	asciiVal = *charPtr;
 	asciiPtr = &asciiVal;
 
-    // only shift upper- and lowercase letters
+	// only shift upper- and lowercase letters
 	if (asciiVal >= ENG_UPPER_FLOOR && asciiVal <= ENG_UPPER_CEILING) {
 		getCipherAscii(ENG_UPPER_FLOOR, asciiPtr, shiftVal);
 	} else if (asciiVal >= ENG_LOWER_FLOOR && asciiVal <= ENG_LOWER_CEILING) {
