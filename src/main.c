@@ -8,7 +8,7 @@ void copyArr(char *, char *);
 int main(void) {
 
 	//TODO cli/o
-	char plainArr[] = "aBc1! xYz";
+	char plainArr[] = "aBc1! xYz"; //len is 6 (inc. null-term)
 	int caesarShiftVal = 12;
 
 	// get length of input plaintext
@@ -16,16 +16,11 @@ int main(void) {
 	int * lenPtr = &len;
 	getArrLen(plainArr, lenPtr);
 
-	printf("len is: %d\n", len);
-
 	// initialize cipher arrays & load with plaintext
 	char rot13Arr[len];
 	char caesarArr[len];
 	copyArr(plainArr, rot13Arr);
 	copyArr(plainArr, caesarArr);
-
-	//TEST
-	printf("New arrays: rot13 - %s, caesar - %s\n", rot13Arr, caesarArr);
 
 	rot13(rot13Arr);
 	caesar(caesarArr, caesarShiftVal);
@@ -40,11 +35,11 @@ int main(void) {
 void getArrLen(char * arr, int * lenPtr) {
 	int i = 0;
 	while (arr[i] != '\0') {
-		*lenPtr = i;
+		*lenPtr = i+1;
 		i++; 
 	}
 	// add space for null-terminating char
-	*lenPtr++;
+	(*lenPtr)++;
 }
 
 void copyArr(char * arr, char * newArr) {
@@ -54,5 +49,5 @@ void copyArr(char * arr, char * newArr) {
 		i++;
 	}
 	// add null-terminating char
-	newArr[i+1] = '\0';
+	newArr[i] = '\0';
 }

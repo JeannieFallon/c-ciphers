@@ -4,8 +4,6 @@
 
 void caesar(char * arr, int shiftVal) {
 
-	printf("Caesar shiftVal inside caesar() is %d\n", shiftVal);
-
 	char * charPtr;
 	int i;
 
