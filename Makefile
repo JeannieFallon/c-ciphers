@@ -9,7 +9,7 @@ bin/caesar.so: lib/caesar.c lib/caesar.h
 	gcc -c lib/caesar.c -o bin/caesar.so
 bin/vigenere.so: lib/vigenere.c lib/vigenere.h
 	gcc -c lib/vigenere.c -o bin/vigenere.so
-main: src/main.c bin/ciphers.so
+main: src/main.c src/main.h
 	gcc src/main.c bin/rot13.so bin/caesar.so bin/vigenere.so bin/ciphers.so -o bin/main
 # clean
 binaries = bin/ciphers.so bin/rot13.so bin/caesar.so bin/main

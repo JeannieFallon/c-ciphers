@@ -1,15 +1,13 @@
 #include <stdio.h>
+#include "main.h"
 #include "../lib/rot13.h"
 #include "../lib/caesar.h"
 #include "../lib/vigenere.h"
 
-void getLen(char *, int *);
-void copyArr(char *, char *);
-
 int main(void) {
 
 	//TODO cli/o
-	char plainArr[] = "aBc1! xYz"; //len is 6 (inc. null-term)
+	char plainArr[] = "aBc1! xYz";
 	int caesarShiftVal = 12;
 	char keyword[] = "abc";
 
