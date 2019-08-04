@@ -3,7 +3,7 @@
 #include "../lib/caesar.h"
 #include "../lib/vigenere.h"
 
-void getArrLen(char *, int *);
+void getLen(char *, int *);
 void copyArr(char *, char *);
 
 int main(void) {
@@ -13,10 +13,12 @@ int main(void) {
 	int caesarShiftVal = 12;
 	char keyword[] = "abc";
 
-	// get length of input plaintext
-	int len;
+	// get lengths of input plaintext & keyword
+	int len, keyLen;
 	int * lenPtr = &len;
-	getArrLen(plainArr, lenPtr);
+	int * keyLenPtr = &keyLen;
+	getLen(plainArr, lenPtr);
+	getLen(keyword, keyLenPtr);
 
 	// initialize cipher arrays & load with plaintext
 	char rot13Arr[len];
@@ -28,7 +30,7 @@ int main(void) {
 
 	rot13(rot13Arr);
 	caesar(caesarArr, caesarShiftVal);
-	vigenere(vigenereArr, keyword, len);
+	vigenere(vigenereArr, keyword, len, keyLen);
 
 	printf("Plain text:\n%s\n", plainArr);
 	printf("ROT13 cipher text:\n%s\n", rot13Arr);
@@ -38,7 +40,7 @@ int main(void) {
 	return 0;
 }
 
-void getArrLen(char * arr, int * lenPtr) {
+void getLen(char * arr, int * lenPtr) {
 	int i = 0;
 	while (arr[i] != '\0') {
 		*lenPtr = i+1;

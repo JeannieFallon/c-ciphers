@@ -2,7 +2,11 @@
 #include "vigenere.h"
 #include "ciphers.h"
 
-void vigenere(char * arr, char * keyword, int arrLen) {
+void vigenere(char * arr, char * keyword, int arrLen, int keyLen) {
+
+	// get array of shift values from input keyword
+	int shiftVals[keyLen];
+	getShiftVals(shiftVals, keyword);
 
 	char * charPtr;
 	int i, j;

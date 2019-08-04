@@ -39,4 +39,25 @@ void getRotation(int * alphaIdxPtr, int shiftVal) {
 	*alphaIdxPtr = (*alphaIdxPtr + shiftVal) % ENG_ALPHA_LEN;
 }
 
+void getShiftVals(int * shiftValPtr, char * keywordPtr) {
+
+	int i, asciiVal;
+
+	i=0;
+	while (keywordPtr[i] != '\0') {
+		asciiVal = keywordPtr[i];
+
+		if (asciiVal >= ENG_UPPER_FLOOR && asciiVal <= ENG_UPPER_CEILING) {
+			shiftValPtr[i] = asciiVal - ENG_UPPER_FLOOR + 1;
+		} else if (asciiVal >= ENG_LOWER_FLOOR && asciiVal <= ENG_LOWER_CEILING) {
+			shiftValPtr[i] = asciiVal - ENG_LOWER_FLOOR + 1;			
+		}
+
+		printf("shiftVal[%d] is %d\n", i, shiftValPtr[i]);
+
+		i++;
+	}
+}
+
+
 

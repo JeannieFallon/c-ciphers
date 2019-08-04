@@ -9,5 +9,6 @@
 void getCipherChar(char *, int);
 void getCipherAscii(int, int *, int);
 void getRotation(int *, int);
+void getShiftVals(int *, char *);
 
 #endif
