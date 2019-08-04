@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "../lib/rot13.h"
 #include "../lib/caesar.h"
+#include "../lib/vigenere.h"
 
 void getArrLen(char *, int *);
 void copyArr(char *, char *);
@@ -10,6 +11,7 @@ int main(void) {
 	//TODO cli/o
 	char plainArr[] = "aBc1! xYz"; //len is 6 (inc. null-term)
 	int caesarShiftVal = 12;
+	char keyword[] = "abc";
 
 	// get length of input plaintext
 	int len;
@@ -19,15 +21,19 @@ int main(void) {
 	// initialize cipher arrays & load with plaintext
 	char rot13Arr[len];
 	char caesarArr[len];
+	char vigenereArr[len];
 	copyArr(plainArr, rot13Arr);
 	copyArr(plainArr, caesarArr);
+	copyArr(plainArr, vigenereArr);
 
 	rot13(rot13Arr);
 	caesar(caesarArr, caesarShiftVal);
+	vigenere(vigenereArr, keyword, len);
 
 	printf("Plain text:\n%s\n", plainArr);
-	printf("ROT13 cipher text:\n%s\n", rot13Arr);\
-	printf("Caesar cipher text:\n%s\n", caesarArr);\
+	printf("ROT13 cipher text:\n%s\n", rot13Arr);
+	printf("Caesar cipher text:\n%s\n", caesarArr);
+	printf("Vigenere cipher text:\n%s\n", vigenereArr);
 
 	return 0;
 }
