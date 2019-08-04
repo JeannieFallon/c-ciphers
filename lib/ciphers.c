@@ -52,9 +52,6 @@ void getShiftVals(int * shiftValPtr, char * keywordPtr) {
 		} else if (asciiVal >= ENG_LOWER_FLOOR && asciiVal <= ENG_LOWER_CEILING) {
 			shiftValPtr[i] = asciiVal - ENG_LOWER_FLOOR + 1;			
 		}
-
-		printf("shiftVal[%d] is %d\n", i, shiftValPtr[i]);
-
 		i++;
 	}
 }
