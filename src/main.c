@@ -6,10 +6,19 @@
 
 int main(void) {
 
-	//TODO cli/o
-	char plainArr[] = "aBc1! xYz";
-	int caesarShiftVal = 12;
-	char keyword[] = "abc";
+	//TODO use realloc & make array sizes dynamic
+	char plainArr[100];
+	char keyword[10];
+	int caesarShiftVal;
+
+	printf("Enter string plaintext (max 100 char):\n");
+	scanf("%[^\n]s", plainArr);
+
+	printf("Enter integer for Caesar key value:\n");
+	scanf("%d", &caesarShiftVal);
+
+	printf("Enter string for Vigenere keyword (max 10 char):\n");
+	scanf("%[^\n]s", keyword);
 
 	// get lengths of input plaintext & keyword
 	int len, keyLen;
@@ -17,6 +26,8 @@ int main(void) {
 	int * keyLenPtr = &keyLen;
 	getLen(plainArr, lenPtr);
 	getLen(keyword, keyLenPtr);
+
+	printf("len=%d, keyLen=%d\n", len, keyLen);
 
 	// initialize cipher arrays & load with plaintext
 	char rot13Arr[len];
