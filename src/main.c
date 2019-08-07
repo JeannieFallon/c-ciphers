@@ -4,22 +4,30 @@
 #include "../lib/rot13.h"
 #include "../lib/caesar.h"
 #include "../lib/vigenere.h"
+#define PLAINTXT_LEN 100
+#define KEYWORD_LEN 10
 
 int main(void) {
 
 	//TODO use realloc & make array sizes dynamic
-	char * plainArr = (char *)malloc((100 * sizeof(char)) + 1);
-	char * keyword = (char *)malloc((10 * sizeof(char)) + 1);
-	int caesarShiftVal;
+	char * plainArr = (char *)malloc((PLAINTXT_LEN * sizeof(char)) + 1);
+	char * keyword = (char *)malloc((KEYWORD_LEN * sizeof(char)) + 1);
+	char * caesKeyInput = (char *)malloc(2 * sizeof(char));
+	int caesarKey = 0;
 
-	printf("Enter string plaintext (max 100 char):\n");
-	scanf("%[^\n]s", plainArr);
+	printf("Enter string plaintext (max 100 char): ");
+	fgets(plainArr, PLAINTXT_LEN, stdin);
 
-	printf("Enter integer for Caesar key value:\n");
-	scanf("%d", &caesarShiftVal);
+	while (!caesarKey) {
+		printf("Enter integer for Caesar key value (max value 99): ");
+		fgets(caesKeyInput, sizeof(caesKeyInput), stdin);
+		caesarKey = atoi(caesKeyInput);
+	}
 
-	printf("Enter string for Vigenere keyword (max 10 char):\n");
-	scanf("%[^\n]s", keyword);
+	printf("Enter string for Vigenere keyword (max 10 char): ");
+	fgets(keyword, KEYWORD_LEN, stdin);
+
+	printf("keyword: \'%s\'\n", keyword);
 
 	// get lengths of input plaintext & keyword
 	int len, keyLen;
@@ -37,7 +45,7 @@ int main(void) {
 	copyArr(plainArr, vigenereArr);
 
 	rot13(rot13Arr);
-	caesar(caesarArr, caesarShiftVal);
+	caesar(caesarArr, caesarKey);
 	vigenere(vigenereArr, keyword, len, keyLen);
 
 	printf("Plain text:\n%s\n", plainArr);
