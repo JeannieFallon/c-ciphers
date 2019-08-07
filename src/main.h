@@ -3,5 +3,6 @@
 
 void getLen(char *, int *);
 void copyArr(char *, char *);
+void trim(char *);
 
 #endif

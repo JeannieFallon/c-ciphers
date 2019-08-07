@@ -26,8 +26,7 @@ int main(void) {
 
 	printf("Enter string for Vigenere keyword (max 10 char): ");
 	fgets(keyword, KEYWORD_LEN, stdin);
-
-	printf("keyword: \'%s\'\n", keyword);
+	trim(keyword);
 
 	// get lengths of input plaintext & keyword
 	int len, keyLen;
@@ -74,4 +73,15 @@ void copyArr(char * arr, char * newArr) {
 	}
 	// add null-terminating char
 	newArr[i] = '\0';
+}
+
+void trim(char * arr) {
+	int i=0;
+	while (arr[i] != '\0') {
+		if (arr[i] == '\n') {
+			arr[i] = '\0';
+			break;
+		}
+		i++;
+	}
 }
