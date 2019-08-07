@@ -8,8 +8,8 @@
 int main(void) {
 
 	//TODO use realloc & make array sizes dynamic
-	char plainArr[100];
-	char keyword[10];
+	char * plainArr = (char *)malloc((100 * sizeof(char)) + 1);
+	char * keyword = (char *)malloc((10 * sizeof(char)) + 1);
 	int caesarShiftVal;
 
 	printf("Enter string plaintext (max 100 char):\n");
@@ -27,8 +27,6 @@ int main(void) {
 	int * keyLenPtr = &keyLen;
 	getLen(plainArr, lenPtr);
 	getLen(keyword, keyLenPtr);
-
-	printf("len=%d, keyLen=%d\n", len, keyLen);
 
 	// allocate cipher arrays & load with plaintext
 	char * rot13Arr = (char *)malloc((len * sizeof(char)) + 1);
