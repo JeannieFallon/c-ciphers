@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 #include "../lib/rot13.h"
 #include "../lib/caesar.h"
@@ -29,10 +30,10 @@ int main(void) {
 
 	printf("len=%d, keyLen=%d\n", len, keyLen);
 
-	// initialize cipher arrays & load with plaintext
-	char rot13Arr[len];
-	char caesarArr[len];
-	char vigenereArr[len];
+	// allocate cipher arrays & load with plaintext
+	char * rot13Arr = (char *)malloc((len * sizeof(char)) + 1);
+	char * caesarArr = (char *)malloc((len * sizeof(char)) + 1);
+	char * vigenereArr = (char *)malloc((len * sizeof(char)) + 1);
 	copyArr(plainArr, rot13Arr);
 	copyArr(plainArr, caesarArr);
 	copyArr(plainArr, vigenereArr);
