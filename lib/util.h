@@ -1,5 +1,5 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef _UTIL_H_
+#define _UTIL_H_
 
 void getLen(char *, int *);
 void copyArr(char *, char *);

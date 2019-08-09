@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
 #include "../lib/ciphers.h"
+#include "../lib/util.h"
 #define PLAINTXT_LEN 100
 #define KEYWORD_LEN 10
 
@@ -51,35 +51,4 @@ int main(void) {
 	printf("Vigenere cipher text:\n%s\n", vigenereArr);
 
 	return 0;
-}
-
-void getLen(char * arr, int * lenPtr) {
-	int i = 0;
-	while (arr[i] != '\0') {
-		*lenPtr = i+1;
-		i++; 
-	}
-	// add space for null-terminating char
-	(*lenPtr)++;
-}
-
-void copyArr(char * arr, char * newArr) {
-	int i = 0;
-	while (arr[i] != '\0') {
-		newArr[i] = arr[i];
-		i++;
-	}
-	// add null-terminating char
-	newArr[i] = '\0';
-}
-
-void trim(char * arr) {
-	int i=0;
-	while (arr[i] != '\0') {
-		if (arr[i] == '\n') {
-			arr[i] = '\0';
-			break;
-		}
-		i++;
-	}
 }
