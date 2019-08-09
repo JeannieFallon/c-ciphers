@@ -1,60 +1,59 @@
 #include <stdio.h>
 #include "ciphers.h"
+#include "shift.h"
 
-void getCipherChar(char * charPtr, int shiftVal) {
-	
-	int asciiVal;
-	int * asciiPtr;
+void rot13(char * arr) {
 
-	asciiVal = *charPtr;
-	asciiPtr = &asciiVal;
+	char * charPtr;
+	int i;
 
-	// only shift upper- and lowercase letters
-	if (asciiVal >= ENG_UPPER_FLOOR && asciiVal <= ENG_UPPER_CEILING) {
-		getCipherAscii(ENG_UPPER_FLOOR, asciiPtr, shiftVal);
-	} else if (asciiVal >= ENG_LOWER_FLOOR && asciiVal <= ENG_LOWER_CEILING) {
-		getCipherAscii(ENG_LOWER_FLOOR, asciiPtr, shiftVal);
-	}
-
-	*charPtr = (char)(asciiVal);
-}
-
-void getCipherAscii(int alphaMapVal, int * asciiPtr, int shiftVal) {
-
-    int alphaIdx;
-    int * alphaIdxPtr;
-
-    // map ASCII value onto index of letter in alphabet
-    alphaIdx = *asciiPtr - alphaMapVal;
-    alphaIdxPtr = &alphaIdx;
-
-    // wrap rotation around alphabet indices
-    getRotation(alphaIdxPtr, shiftVal);
-
-    // map alphabet index back onto original ASCII range
-    *asciiPtr = *alphaIdxPtr + alphaMapVal;
-}
-
-void getRotation(int * alphaIdxPtr, int shiftVal) {
-	*alphaIdxPtr = (*alphaIdxPtr + shiftVal) % ENG_ALPHA_LEN;
-}
-
-void getShiftVals(int * shiftValPtr, char * keywordPtr) {
-
-	int i, asciiVal;
-
-	i=0;
-	while (keywordPtr[i] != '\0') {
-		asciiVal = keywordPtr[i];
-
-		if (asciiVal >= ENG_UPPER_FLOOR && asciiVal <= ENG_UPPER_CEILING) {
-			shiftValPtr[i] = asciiVal - ENG_UPPER_FLOOR + 1;
-		} else if (asciiVal >= ENG_LOWER_FLOOR && asciiVal <= ENG_LOWER_CEILING) {
-			shiftValPtr[i] = asciiVal - ENG_LOWER_FLOOR + 1;			
-		}
+	i = 0;
+	while (arr[i] != '\0') {
+		charPtr = &arr[i];
+		getCipherChar(charPtr, SHIFT_VAL);
 		i++;
 	}
 }
 
+void caesar(char * arr, int shiftVal) {
 
+	char * charPtr;
+	int i;
 
+	i=0;
+	while (arr[i] != '\0') {
+		charPtr = &arr[i];
+		getCipherChar(charPtr, shiftVal);
+		i++;
+	}
+}
+
+void vigenere(char * arr, char * keyword, int arrLen, int keyLen) {
+
+	// get array of shift values from input keyword
+	// shiftVals is len-1 because no null-terminating on int array
+	int shiftVals[keyLen-1];
+	getShiftVals(shiftVals, keyword);
+
+	char * charPtr;
+	int i, j;
+
+	i=0;
+	while (arr[i] != '\0') {
+
+		j=0;
+		while (j < keyLen) {
+
+			// don't include null-term in accessible array indices
+			if (i >= (arrLen - 1)) {
+				break;
+			} else {
+				charPtr = &arr[i];
+				getCipherChar(charPtr, shiftVals[j]);
+			}
+
+			i++;
+			j++;
+		}
+	}
+}

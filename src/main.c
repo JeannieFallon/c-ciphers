@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
-#include "../lib/rot13.h"
-#include "../lib/caesar.h"
-#include "../lib/vigenere.h"
+#include "../lib/ciphers.h"
 #define PLAINTXT_LEN 100
 #define KEYWORD_LEN 10
 
