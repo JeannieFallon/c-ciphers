@@ -1,2 +1,7 @@
 # ciphers-c
-Temporary holding ground for C work (rewriting ciphers).
+A command-line application for ROT13, Caesar, and Vigenere ciphers.
+
+_TODO:_
+
+* user input work
+* memory management
